@@ -1,0 +1,71 @@
+﻿@using CleanArchit.Domain.Models
+@model Student
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+
+<div class="text-center">
+    <h1 class="display-4">List of Students [@ViewBag.Count]</h1>
+    <div class="container">
+    <form asp-action="UpdateStudent">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+        <div class="form-group col">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group col">
+            <label asp-for="SecondName" class="control-label"></label>
+            <input asp-for="SecondName" class="form-control" />
+            <span asp-validation-for="SecondName" class="text-danger"></span>
+        </div>
+            </div>
+        <div class="row">
+        <div class="form-group col">
+            <label asp-for="DateOfBirth" class="control-label"></label>
+            <input asp-for="DateOfBirth" type="date" class="form-control" />
+            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+        </div>
+        <div class="form-group col">
+            <label asp-for="Mark" class="control-label"></label>
+            <input asp-for="Mark" type="number" max="12" min="2" class="form-control" />
+            <span asp-validation-for="Mark" class="text-danger"></span>
+        </div>
+            </div>
+        <div class="row">
+        <div class="form-group col">
+            <label asp-for="Specialization" class="control-label"></label>
+            <input asp-for="Specialization" class="form-control" />
+            <span asp-validation-for="Specialization" class="text-danger"></span>
+        </div>
+        <div class="form-group col">
+            <label asp-for="Course" class="control-label"></label>
+            <input asp-for="Course" type="number" min="1" max="5" class="form-control" />
+            <span asp-validation-for="Course" class="text-danger"></span>
+        </div>
+            </div>
+        <div class=" row">
+        <div class="form-group col">
+            <label asp-for="TicketNumber" class="control-label"></label>
+            <input asp-for="TicketNumber" class="form-control" />
+            <span asp-validation-for="TicketNumber" class="text-danger"></span>
+        </div>
+            </div>
+        <div class="form-group">
+            <input type="submit" value="Update" class="btn btn-primary" />
+        </div>
+    </form>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

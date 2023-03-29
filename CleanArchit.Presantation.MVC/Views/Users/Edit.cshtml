@@ -1,0 +1,54 @@
+﻿@model CleanArchit.Presantation.MVC.Models.AdminModels.EditUserModel
+@{
+    ViewBag.Title = "Edit User";
+}
+<form asp-action="Edit" asp-controller="Users">
+    <div class="container">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="row">
+    <div class="form-floating col">
+        <input asp-for="Name" class="form-control" autocomplete="name" aria-required="true" />
+        <label asp-for="Name"></label>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-floating col">
+        <input asp-for="SecondName" class="form-control" autocomplete="secondname" aria-required="true" />
+        <label asp-for="SecondName"></label>
+        <span asp-validation-for="SecondName" class="text-danger"></span>
+            </div>
+    </div>
+    <div class="row">
+    <div class="form-floating col">
+        <input asp-for="Sirname" class="form-control" autocomplete="sirname" aria-required="true" />
+        <label asp-for="Sirname"></label>
+        <span asp-validation-for="Sirname" class="text-danger"></span>
+    </div>
+    <div class="form-floating col">
+        <input asp-for="PhoneNumber" class="form-control" type="tel" autocomplete="phonenumber" aria-required="true" />
+        <label asp-for="PhoneNumber"></label>
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    </div>
+    <div class="row">
+    <div class="form-floating col">
+        <input asp-for="Email" class="form-control" autocomplete="email" aria-required="true" />
+        <label asp-for="Email"></label>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-floating col">
+        <input asp-for="Role" class="form-control" autocomplete="email" aria-required="true" />
+        <label asp-for="Role"></label>
+        <span asp-validation-for="Role" class="text-danger"></span>
+    </div>
+        </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-outline-secondary" />
+    </div>
+
+    </div>
+</form>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

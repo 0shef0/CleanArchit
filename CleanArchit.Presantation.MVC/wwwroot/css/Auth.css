@@ -1,0 +1,65 @@
+﻿.login-page  {
+    margin-top: 60px;
+}
+
+.registration-page {
+    margin-top: 60px;
+}
+
+.login-form-container {
+    width: 70%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    background-color: #EEEEEE;
+    padding: 0;
+}
+
+.registration-form-container {
+    width: 70%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    background-color: #EEEEEE;
+    padding: 0;
+}
+
+    .registration-form-container form {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+.login-form-container form {
+    width: 70%;
+    margin: 0 auto;
+    padding: 5px 0;
+}
+
+/*.picture img {
+    height: 400px;
+}*/
+
+.picture {
+    background-image: linear-gradient(rgba(51, 51, 51, 0.527), rgba(51, 51, 51, 0.527)), url("../images/planner.jpg");
+    background-position: center top 25%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 500px;
+    height: 100%;
+    width: 100%;
+    background-color: #333333;
+}
+
+.form-group{
+    margin-bottom: 15px;
+}
+
+.footer {
+    height: 30px;
+    text-align: center;
+    bottom: 0;
+    position: relative
+    width: inherit;
+} 

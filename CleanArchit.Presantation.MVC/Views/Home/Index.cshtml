@@ -1,0 +1,77 @@
+﻿@using CleanArchit.Application.ViewModels;
+@model IndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <form method="get" class="row">
+        <label class="col-2">Student Mark</label>
+        <input class="col-2" type="text" name="mark" max="12" min="2" value="@Model.Filter.SelectedStudent" />
+        <input class="btn btn-sm btn-primary col-1"type="submit" value="Filter" />
+    </form>
+        @if (Model.Students != null)
+        {
+            <table>
+                <thead>
+                    <tr>
+                    <th><a class="text-wh" asp-action="Index" asp-route-sortState="@Model.Sort.IdSort" asp-route-name="@Model.Filter.SelectedStudent">Id</a></th>
+                        <th><a asp-action="Index" asp-route-sortState="@Model.Sort.NameSort" asp-route-name="@Model.Filter.SelectedStudent">Name</a></th>
+                        <th><a asp-action="Index" asp-route-sortState="@Model.Sort.DateSort" asp-route-name="@Model.Filter.SelectedStudent">Date of Birth</a></th>
+                        <th><a asp-action="Index" asp-route-sortState="@Model.Sort.MarkSort" asp-route-name="@Model.Filter.SelectedStudent">Mark</a></th>
+                        <th></th>
+                    <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Students)
+                    {
+                        <tr onclick="@("window.location.href='" + @Url.Action("DetailStudent", "home") + "/" + item.Id +  "'");">
+                            <td>@item.Id</td>
+                            <td>@item.Name </td>
+                            <td>@item.DateOfBirth</td>
+                            <td>@item.Mark</td>
+                            @if (User.IsInRole("Teacher") || User.IsInRole("Admin"))
+                            {
+                            <td><a asp-action="UpdateStudent" class="btn btn-sm btn-primary" asp-controller="Home" asp-route-id=@item.Id>Edit</a></td>
+                            }
+                        @if (User.IsInRole("Teacher") || User.IsInRole("Admin"))
+                        {
+                            <td><form asp-action="RemoveStudentById" asp-route-id="@item.Id" method="post">
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    Delete
+                                </button>
+                                </form>
+                            </td>
+                        }
+                        </tr>
+                     }
+                </tbody>
+            </table>
+            
+        }
+        @if (User.IsInRole("Teacher") || User.IsInRole("Admin"))
+        {
+        <a class="btn btn-sm btn-primary" asp-action="AddStudent" asp-controller="Home">Add</a>
+        }
+    <div class="pagination">
+        @if (Model.Pagination.HasPreviousPage)
+        {
+
+            <a asp-action="Index" asp-controller="Home" class="btn btn-sm btn-online-secondary page-link"
+           asp-route-page="@(Model.Pagination.PageNumber-1)"
+           asp-route-name="@Model.Filter.SelectedStudent"
+           asp-route-sortstate="@Model.Sort.Current">Prew</a>
+
+        }
+        @if (Model.Pagination.HasNextPafe)
+        {
+
+            <a asp-action="Index" asp-controller="Home" class="btn btn-sm btn-online-secondary page-link"
+           asp-route-page="@(Model.Pagination.PageNumber+1)"
+           asp-route-name="@Model.Filter.SelectedStudent"
+           asp-route-sortstate="@Model.Sort.Current">Next</a>
+
+        }
+    </div>
+</div>

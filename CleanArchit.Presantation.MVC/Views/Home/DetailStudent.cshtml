@@ -1,0 +1,73 @@
+﻿@using CleanArchit.Domain.Models
+@model Student
+
+<div class="container">
+        <div class="task-page-container">
+            <div class="task-info">
+                <h4>@Model.Name</h4>
+                <div class="task-info-description">
+                    @Model.SecondName
+                </div>
+                <div class="task-info-body-cont">
+                    <div class="task-info-field">
+                        <div class="task-info-title-field">
+                            Course
+                        </div>
+                        <div>
+                            @Model.Course
+                        </div>
+                    </div>
+                    <div class="task-info-field">
+                        <div class="task-info-title-field">
+                            Specialization
+                        </div>
+                        <div>
+                            @Model.Specialization
+                        </div>
+                    </div>
+                    <div class="task-info-field">
+                        <div class="task-info-title-field">
+                            Date of Birth
+                        </div>
+                        <div>
+                            @Model.DateOfBirth
+                        </div>
+                    </div>
+                    <div class="task-info-field">
+                        <div class="task-info-title-field">
+                            Ticket Number
+                        </div>
+                        <div>
+                            @Model.TicketNumber
+                        </div>
+                    </div>
+                    <div class="task-info-field">
+                        <div class="task-info-title-field">
+                            Mark
+                        </div>
+                        <div>
+                            @Model.Mark
+                        </div>
+                    </div>
+                    <div></div>
+                    <div class="btn-group">
+                        <button class="btn-primary">
+                            <a onclick="@("window.location.href='" + @Url.Action("UpdateStudent", "home") + "/" + Model.Id +  "'");">Update</a>
+                        </button>
+                        <form method="post" asp-action="RemoveStudentById" asp-controller="home" asp-route-id="@Model.Id">
+                            <button class="btn-danger" type="submit">
+                                Delete
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        @*<div>
+        <a asp-action="Index" asp-controller="Home">Back</a>
+        </div>*@
+    </div>
+</div>
