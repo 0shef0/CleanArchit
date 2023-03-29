@@ -160,9 +160,9 @@ namespace CleanArchit.Presantation.MVC.Areas.Identity.Pages.Account
                 var user = _mapper.Map<TeacherIdentity>(teacher);
 
                 await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
-                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
-                await _userManager.AddToRoleAsync(user, "Teacher");
+                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);                
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                await _userManager.AddToRoleAsync(user, "Teacher");
 
                 if (result.Succeeded)
                 {
